@@ -81,7 +81,7 @@ export default function LoginPage() {
                 type="text"
                 {...register("username")}
                 placeholder="Enter your username"
-                className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-600 rounded-lg py-2.5 px-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+                className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-655 rounded-lg py-2.5 px-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
               />
             </div>
             {errors.username && (
@@ -99,7 +99,7 @@ export default function LoginPage() {
                 type="password"
                 {...register("password")}
                 placeholder="••••••••"
-                className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-600 rounded-lg py-2.5 px-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+                className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-655 rounded-lg py-2.5 px-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
               />
             </div>
             {errors.password && (
