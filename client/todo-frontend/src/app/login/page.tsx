@@ -43,7 +43,7 @@ export default function LoginPage() {
       } else {
         setError("Invalid response format from server.");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error("Login component error:", err);
       setError("Invalid username or password");
     } finally {
@@ -131,7 +131,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-6 text-center text-xs text-slate-500">
-          Don't have an account?{" "}
+          {"Don't have an account? "}
           <Link href="/signup" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors duration-150">
             Sign up
           </Link>

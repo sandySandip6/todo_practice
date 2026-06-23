@@ -45,13 +45,14 @@ export default function SignupPage() {
       await registerUser(data.username, data.email, data.password);
       setSuccess("Account created successfully! Redirecting to login...");
       setTimeout(() => {
-        router.push("/");
+        router.push("/login");
       }, 2000);
-    } catch (err: any) {
+    } catch (err) {
       console.error("Signup error:", err);
-      if (err.response?.data) {
+      const apiError = err as { response?: { data?: Record<string, string[]> } };
+      if (apiError.response?.data) {
         // Build readable errors from Django API response
-        const apiErrors = err.response.data;
+        const apiErrors = apiError.response.data;
         const msg = Object.keys(apiErrors)
           .map((key) => `${key}: ${apiErrors[key].join(", ")}`)
           .join(" | ");
@@ -93,7 +94,7 @@ export default function SignupPage() {
               type="text"
               {...register("username")}
               placeholder="username"
-              className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-650 rounded-lg py-2 px-3.5 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+              className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-655 rounded-lg py-2 px-3.5 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
             />
             {errors.username && (
               <p className="text-rose-500 text-xs mt-1 font-medium">{errors.username.message}</p>
@@ -109,7 +110,7 @@ export default function SignupPage() {
               type="email"
               {...register("email")}
               placeholder="you@example.com"
-              className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-650 rounded-lg py-2 px-3.5 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+              className="w-full bg-slate-950/50 border border-slate-800 text-slate-100 placeholder-slate-655 rounded-lg py-2 px-3.5 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
             />
             {errors.email && (
               <p className="text-rose-500 text-xs mt-1 font-medium">{errors.email.message}</p>
@@ -155,7 +156,7 @@ export default function SignupPage() {
           )}
 
           {success && (
-            <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-450 rounded-lg p-2.5 text-xs text-center font-medium">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg p-2.5 text-xs text-center font-medium">
               {success}
             </div>
           )}
